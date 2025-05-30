@@ -2,6 +2,7 @@ from flask import Flask, render_template_string
 import pandas as pd
 from sqlalchemy import create_engine
 import urllib
+import os
 
 app = Flask(__name__)
 
@@ -9,6 +10,8 @@ server = 'predictionsv.database.windows.net'
 database = 'PredictionDatabase'
 username = 'sqladmin'
 password = 'Adfxytdryxdt@szer21324'
+
+port = int(os.environ.get("PORT", 8000))
 
 params = urllib.parse.quote_plus(
     f"Driver={{ODBC Driver 17 for SQL Server}};"
@@ -42,4 +45,4 @@ def index():
     """, table=html)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8000)
+    app.run(host='0.0.0.0', port=port)
