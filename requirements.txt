@@ -1,4 +1,5 @@
 flask
-sqlalchemy
 pandas
+sqlalchemy
 pyodbc
+gunicorn
