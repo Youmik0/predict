@@ -23,14 +23,14 @@ jobs:
       uses: docker/login-action@v2
       with:
         registry: https://dd4f0669d11043159ccbf2b1e78479d4.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_71f8e10909574678885cb7f20b97eecb }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_ab63d942f6eb4e6588d8d31aefcdbc65 }}
+        username: ${{ secrets.AzureAppService_ContainerUsername_632f9c351d0f4b08929eb3c495bb0832 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_2c563a8f0382451d96619e046096cba6 }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: dd4f0669d11043159ccbf2b1e78479d4.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_71f8e10909574678885cb7f20b97eecb }}/dd4f0669d11043159ccbf2b1e78479d4/app:${{ github.sha }}
+        tags: dd4f0669d11043159ccbf2b1e78479d4.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_632f9c351d0f4b08929eb3c495bb0832 }}/dd4f0669d11043159ccbf2b1e78479d4/dd4f0669d11043159ccbf2b1e78479d4/app:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'predictuz'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_01fbbc1010434f09a3c5f2ee6742f689 }}
-        images: 'dd4f0669d11043159ccbf2b1e78479d4.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_71f8e10909574678885cb7f20b97eecb }}/dd4f0669d11043159ccbf2b1e78479d4/app:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ddb82eef61c14923a2672ad812dbedf4 }}
+        images: 'dd4f0669d11043159ccbf2b1e78479d4.azurecr.io/${{ secrets.AzureAppService_ContainerUsername_632f9c351d0f4b08929eb3c495bb0832 }}/dd4f0669d11043159ccbf2b1e78479d4/dd4f0669d11043159ccbf2b1e78479d4/app:${{ github.sha }}'
